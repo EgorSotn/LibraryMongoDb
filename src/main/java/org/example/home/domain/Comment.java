@@ -6,7 +6,7 @@ import lombok.*;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "comments")
+@Table(name = "comment")
 @Data
 @RequiredArgsConstructor
 @AllArgsConstructor
