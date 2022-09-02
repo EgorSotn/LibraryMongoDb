@@ -94,7 +94,7 @@ class LibraryServiceImplTest {
                 Optional.of( new Genre(INSERT_ID_GENRE1, INSERT_NAME_GENRE1)));
         when(genreRepository.getByNameOrCreate(new Genre( INSERT_NAME_GENRE2))).thenReturn(
                 Optional.of(  new Genre(INSERT_ID_GENRE2, INSERT_NAME_GENRE2)));
-//        when(bookRepository.isExistBook(any())).thenReturn(true);
+
         when(controllerMessenger.getAsk()).thenReturn(INSERT_NAME_BOOK)
                 .thenReturn(INSERT_YEAR_BOOK)
                 .thenReturn(INSERT_NAME_AUTHOR)
