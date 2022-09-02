@@ -11,7 +11,7 @@ import org.example.home.repository.author.AuthorRepository;
 import org.example.home.repository.book.BookRepository;
 
 import org.example.home.repository.genre.GenreRepository;
-import org.example.home.service.execption.AuthorNotFoundException;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -55,8 +55,7 @@ public class LibraryServiceImpl implements LibraryService {
             genreList.add(genre);
         }
 
-        Author author = authorRepository.getByNameOrCreate(new Author(nameAuthor,  yearAuthor))
-                .orElseThrow(() -> new AuthorNotFoundException(nameAuthor));
+        Author author = authorRepository.getByNameOrCreate(new Author(nameAuthor,  yearAuthor)).get();
 
         Book insertBook = new Book(nameBook,   dateBook, genreList, author, null);
 
