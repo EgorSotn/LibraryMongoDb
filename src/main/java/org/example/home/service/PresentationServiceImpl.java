@@ -34,13 +34,6 @@ public class PresentationServiceImpl implements PresentationService{
                 + " Имя автора: "  + book.getAuthor().getNameAuthor() +
                 " Название жанра: "
                 + book.getGenres().stream().map(Genre::toString).collect(Collectors.joining(",")) + " ";
-        if(book.getComments().isEmpty()){
-            return  str;
-        }
-        else {
-            return str + "Комментарии: " +
-                    book.getComments().stream().map(Comment::toString).collect(Collectors.joining("\n"))+
-                    " )";
-        }
+       return str;
     }
 }

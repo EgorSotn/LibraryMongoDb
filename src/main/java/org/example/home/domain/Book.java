@@ -7,6 +7,9 @@ import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import javax.persistence.*;
 
@@ -14,37 +17,35 @@ import java.util.Collections;
 import java.util.List;
 
 
+@Document("books")
 @Data
 @AllArgsConstructor
 @RequiredArgsConstructor
-@Entity
-@Table(name = "book")
 public class Book {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_book")
-    private long idBook;
-    @Column(name = "name_book")
+    private String idBook;
+
+
+    @Field("name")
     private String name;
-    @Column(name = "year_book")
+
+
+    @Field("year")
     private String year;
 
-    @Fetch(FetchMode.SELECT)
-    @ManyToMany(targetEntity = Genre.class, fetch = FetchType.LAZY, cascade = {CascadeType.ALL ,CascadeType.DETACH})
-    @JoinTable(name = "book_genre", joinColumns = @JoinColumn(name = "id_book"),
-            inverseJoinColumns = @JoinColumn(name = "id_genre"))
+
+    @Field("genre")
     private List<Genre> genres;
 
-    @Fetch(FetchMode.SELECT)
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_author")
+
+    @Field("author")
     private Author author;
 
-    @Fetch(FetchMode.SELECT)
-    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL , fetch = FetchType.LAZY)
+    @DBRef
     private List<Comment> comments;
 
-    public Book(long idBook, String name, String year, Genre genre, Author author, Comment comments) {
+    public Book(String idBook, String name, String year, Genre genre, Author author, Comment comments) {
         this.idBook = idBook;
         this.name = name;
         this.year = year;
@@ -53,7 +54,7 @@ public class Book {
         this.comments = Collections.singletonList(comments);
     }
 
-    public Book(long idBook, String name, String year, Genre genre, Author author) {
+    public Book(String idBook, String name, String year, Genre genre, Author author) {
         this.idBook = idBook;
         this.name = name;
         this.year = year;

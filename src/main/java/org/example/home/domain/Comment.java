@@ -1,26 +1,31 @@
 package org.example.home.domain;
 
 import lombok.*;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "comment")
+
+@Document("comments")
 @Data
 @RequiredArgsConstructor
 @AllArgsConstructor
 public class Comment {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY )
-    @Column(name = "id_comment")
-    private long id_comment;
+    @Field("id")
+    private String id_comment;
 
-    @ManyToOne
-    @JoinColumn(name = "id_book")
+    @DBRef
+    @Field("book")
     private Book book;
 
-    public Comment(long id_comment, String text) {
+    @Field("text")
+    private String text;
+
+    public Comment(String id_comment, String text) {
         this.id_comment = id_comment;
         this.text = text;
     }
@@ -29,8 +34,6 @@ public class Comment {
         this.text = text;
     }
 
-    @Column(name = "text", nullable = false)
-    private String text;
 
 
     @Override

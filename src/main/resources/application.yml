@@ -4,16 +4,20 @@ spring:
   shell:
     interactive:
       enabled: true
-#  data:
-#    mongodb:
-#
+  data:
+    mongodb:
 #      authentication-database: admin
-#      username: root
-#      password: root
-#      database: Library
-#      port: 27017
-#      host: localhost
-  datasource:
+      database: Library
+      port: 27017
+      host: localhost
+mongock:
+  # runner-type: "ApplicationRunner" # default
+  runner-type: "InitializingBean"
+  change-logs-scan-package:
+    - org.example.home.mongock.changelogs
+
+
+#  datasource:
 #    url: jdbc:h2:mem:book
 #    username: egor
 #    password: 123
@@ -21,21 +25,22 @@ spring:
 #    schema: schema_book.sql
 #    data: data.sql
 
-    url: jdbc:postgresql://localhost:5432/Library
-    username: postgres
-    password: westa852
-    initialization-mode: always
-  sql:
-    init:
-      mode: always
-  jpa:
-    show-sql: true
-    generate-ddl: true
-    hibernate:
-      ddl-auto: validate
+#    url: jdbc:postgresql://localhost:5432/Library
+#    username: postgres
+#    password: westa852
+#    initialization-mode: always
 
-
-
-    properties:
-      hibernate:
-        format_sql: true
+#  sql:
+#    init:
+#      mode: always
+#  jpa:
+#    show-sql: true
+#    generate-ddl: true
+#    hibernate:
+#      ddl-auto: validate
+#
+#
+#
+#    properties:
+#      hibernate:
+#        format_sql: true

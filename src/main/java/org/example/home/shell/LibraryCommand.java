@@ -27,6 +27,7 @@ public class LibraryCommand {
     @ShellMethod(value = "print book", key = "printAll")
     public String printBooks(){
         List<Book> books = getAllBook();
+    //    return books.stream().map(Book::toString).collect(Collectors.joining("\n"));
         return presentationService.convertBookForShell(books);
     }
     @ShellMethod(value = "add book", key = "addBook")

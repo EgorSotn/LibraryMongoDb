@@ -1,10 +1,11 @@
 package org.example.home.service;
 
-import org.checkerframework.checker.units.qual.A;
+
 import org.example.home.controller.ControllerMessenger;
 import org.example.home.controller.ControllerMessengerIO;
 import org.example.home.domain.Author;
 import org.example.home.domain.Genre;
+
 import org.example.home.repository.author.AuthorRepository;
 import org.example.home.repository.book.BookRepository;
 import org.example.home.repository.comment.CommentRepository;
@@ -26,18 +27,19 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.verify;
 
+
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
-class LibraryServiceImplTest {
-    private static final long INSERT_ID_AUTHOR = 1L;
+class LibraryServiceImplTest{
+    private static final String INSERT_ID_AUTHOR = "1";
     private static final String INSERT_NAME_BOOK = "evangelion";
     private static final String INSERT_YEAR_BOOK = "1999-05-11";
     private static final String INSERT_NAME_AUTHOR = "Pushkin";
     private static final String INSERT_YEAR_AUTHOR = "1993-05-11";
 
 
-    private static final long INSERT_ID_GENRE1 = 1L;
-    private static final long INSERT_ID_GENRE2 = 2L;
+    private static final String INSERT_ID_GENRE1 = "1";
+    private static final String INSERT_ID_GENRE2 = "2";
     private static final String INSERT_NAME_GENRE1 = "drama";
     private static final String INSERT_NAME_GENRE2 = "horror";
 
@@ -59,12 +61,12 @@ class LibraryServiceImplTest {
     @Test
     void shouldDontSaveBook() {
 
-        when(authorRepository.getByNameOrCreate(new Author( INSERT_NAME_AUTHOR, INSERT_YEAR_AUTHOR))).thenReturn(
+        when(authorRepository.getByNameOrCreate(any())).thenReturn(
                 Optional.of(new Author(INSERT_ID_AUTHOR,INSERT_NAME_AUTHOR, INSERT_YEAR_AUTHOR)));
 
-        when(genreRepository.getByNameOrCreate(new Genre( INSERT_NAME_GENRE1))).thenReturn(
+        when(genreRepository.getByNameOrCreate(any())).thenReturn(
                 Optional.of( new Genre(INSERT_ID_GENRE1, INSERT_NAME_GENRE1)));
-        when(genreRepository.getByNameOrCreate(new Genre( INSERT_NAME_GENRE2))).thenReturn(
+        when(genreRepository.getByNameOrCreate(any())).thenReturn(
                 Optional.of(new Genre(INSERT_ID_GENRE2, INSERT_NAME_GENRE2)));
 //        when(bookRepository.isExistBook(any())).thenReturn(true);
         when(controllerMessenger.getAsk()).thenReturn(INSERT_NAME_BOOK)
@@ -87,12 +89,12 @@ class LibraryServiceImplTest {
     @DisplayName("ожидается, что книга добавиться бд")
     @Test
     void shouldSaveBook() {
-        when(authorRepository.getByNameOrCreate(new Author( INSERT_NAME_AUTHOR, INSERT_YEAR_AUTHOR))).thenReturn(
+        when(authorRepository.getByNameOrCreate(any())).thenReturn(
                Optional.of( new Author(INSERT_ID_AUTHOR,INSERT_NAME_AUTHOR, INSERT_YEAR_AUTHOR)));
 
-        when(genreRepository.getByNameOrCreate(new Genre( INSERT_NAME_GENRE1))).thenReturn(
+        when(genreRepository.getByNameOrCreate(any())).thenReturn(
                 Optional.of( new Genre(INSERT_ID_GENRE1, INSERT_NAME_GENRE1)));
-        when(genreRepository.getByNameOrCreate(new Genre( INSERT_NAME_GENRE2))).thenReturn(
+        when(genreRepository.getByNameOrCreate(any())).thenReturn(
                 Optional.of(  new Genre(INSERT_ID_GENRE2, INSERT_NAME_GENRE2)));
 
         when(controllerMessenger.getAsk()).thenReturn(INSERT_NAME_BOOK)

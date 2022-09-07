@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @AllArgsConstructor
@@ -31,7 +32,7 @@ public class LibraryServiceImpl implements LibraryService {
 
     private ControllerMessenger controllerMessenger;
 
-    @Transactional
+
     @Override
     public boolean addBookOrReturnBool() {
 
@@ -55,7 +56,7 @@ public class LibraryServiceImpl implements LibraryService {
             genreList.add(genre);
         }
 
-        Author author = authorRepository.getByNameOrCreate(new Author(nameAuthor,  yearAuthor)).get();
+        Author author = authorRepository.getByNameOrCreate(new Author(nameAuthor, yearAuthor)).get();
 
         Book insertBook = new Book(nameBook,   dateBook, genreList, author, null);
 
@@ -88,12 +89,14 @@ public class LibraryServiceImpl implements LibraryService {
         return authorRepository.getByNameOrCreate(new Author(name, year));
     }
 
-    @Transactional
+
     @Override
     public List<Book> getAllBook() {
 
-        return bookRepository.getAllWithComment();
+        return bookRepository.findAll();
     }
+
+
 
 //    @Transactional
 //    @Override

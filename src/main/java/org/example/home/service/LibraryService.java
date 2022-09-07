@@ -14,6 +14,7 @@ public interface LibraryService {
     Optional<Genre> getGenreOrCreate(String name);
     Optional<Author> getAuthorOrCreate(String name, String year);
     public List<Book> getAllBook();
+
 //    void updateNameBook();
 //    void getByIdBook();
 //    void deleteByIdBook();

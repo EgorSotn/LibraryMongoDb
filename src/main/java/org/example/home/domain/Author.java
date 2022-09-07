@@ -5,25 +5,27 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "author")
+@Document("authors")
 @Data
 @AllArgsConstructor
 @RequiredArgsConstructor
 public class Author {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_author")
-    private long idAuthor;
 
-    @Column(name = "name_author", nullable = false, unique = true)
+    @Id
+    private String idAuthor;
+
+    @Field("name")
+    @Indexed(unique = true)
     private String nameAuthor;
 
-    @Column(name = "year_author")
+    @Field("year")
     private String year;
 
     public Author(String nameAuthor, String year) {
