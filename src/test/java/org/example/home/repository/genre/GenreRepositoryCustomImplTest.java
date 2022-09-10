@@ -20,7 +20,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
-@AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
 class GenreRepositoryCustomImplTest extends AbstractRepositoryMongoTest {
 //    private static final long FIRST_GENRE_ID = 1l;
 //    @Autowired
