@@ -1,14 +1,10 @@
 package org.example.home.repository.comment;
 
-import lombok.RequiredArgsConstructor;
-import org.example.home.domain.Author;
 import org.example.home.domain.Comment;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;

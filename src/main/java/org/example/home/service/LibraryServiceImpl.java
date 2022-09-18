@@ -2,10 +2,10 @@ package org.example.home.service;
 
 import lombok.AllArgsConstructor;
 import org.example.home.controller.ControllerMessenger;
+
+
 import org.example.home.domain.Author;
 import org.example.home.domain.Book;
-
-
 import org.example.home.domain.Genre;
 import org.example.home.repository.author.AuthorRepository;
 import org.example.home.repository.book.BookRepository;
@@ -13,12 +13,10 @@ import org.example.home.repository.book.BookRepository;
 import org.example.home.repository.genre.GenreRepository;
 
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 
 @AllArgsConstructor

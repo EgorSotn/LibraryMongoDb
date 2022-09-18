@@ -1,0 +1,27 @@
+{
+  "groups": [
+    {
+      "name": "spring.data.mongodb",
+      "type": "org.example.home.config.MongoProps",
+      "sourceType": "org.example.home.config.MongoProps"
+    }
+  ],
+  "properties": [
+    {
+      "name": "spring.data.mongodb.database",
+      "type": "java.lang.String",
+      "sourceType": "org.example.home.config.MongoProps"
+    },
+    {
+      "name": "spring.data.mongodb.host",
+      "type": "java.lang.String",
+      "sourceType": "org.example.home.config.MongoProps"
+    },
+    {
+      "name": "spring.data.mongodb.port",
+      "type": "java.lang.Integer",
+      "sourceType": "org.example.home.config.MongoProps"
+    }
+  ],
+  "hints": []
+}

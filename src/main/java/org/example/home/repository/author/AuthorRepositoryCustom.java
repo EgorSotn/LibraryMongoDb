@@ -5,5 +5,5 @@ import org.example.home.domain.Author;
 import java.util.Optional;
 
 public interface AuthorRepositoryCustom {
-    Optional< Author> getByNameOrCreate(Author author);
+    Optional<Author> getByNameOrCreate(Author author);
 }

@@ -1,13 +1,11 @@
 #use:
 #  dataProvider: hibernate
 spring:
-  shell:
-    interactive:
-      enabled: true
+
   data:
     mongodb:
 #      authentication-database: admin
-      database: Library
+      database: LibraryWeb
       port: 27017
       host: localhost
 mongock:

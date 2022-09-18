@@ -2,10 +2,9 @@ package org.example.home.service;
 
 
 import org.example.home.controller.ControllerMessenger;
-import org.example.home.controller.ControllerMessengerIO;
+
 import org.example.home.domain.Author;
 import org.example.home.domain.Genre;
-
 import org.example.home.repository.author.AuthorRepository;
 import org.example.home.repository.book.BookRepository;
 import org.example.home.repository.comment.CommentRepository;
@@ -16,11 +15,11 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.times;
@@ -30,6 +29,7 @@ import static org.mockito.Mockito.verify;
 
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
+@TestPropertySource(properties = "spring.mongodb.embedded.version=3.5.5")
 class LibraryServiceImplTest{
     private static final String INSERT_ID_AUTHOR = "1";
     private static final String INSERT_NAME_BOOK = "evangelion";

@@ -3,16 +3,15 @@ package org.example.home.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
+import org.springframework.data.mongodb.core.index.CompoundIndex;
+import org.springframework.data.mongodb.core.index.CompoundIndexes;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
-import javax.persistence.*;
-
+import javax.persistence.Id;
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
 
@@ -21,32 +20,29 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @RequiredArgsConstructor
-public class Book {
+@CompoundIndexes({
+        @CompoundIndex(name = "name_author", def = "{'author.name' : 1, 'name': 1}", unique = true),
+//        @CompoundIndex( def = "{'genres.name' : 1}", unique = false),
+//        @CompoundIndex( def = "{'author.name' : 1}", unique = false)
+})
+public class Book implements Serializable {
 
     @Id
-    private String idBook;
-
-
+    private String id;
     @Field("name")
     private String name;
-
-
     @Field("year")
     private String year;
-
-
-    @Field("genre")
+    @Field("genres")
     private List<Genre> genres;
-
-
     @Field("author")
     private Author author;
 
     @DBRef
     private List<Comment> comments;
 
-    public Book(String idBook, String name, String year, Genre genre, Author author, Comment comments) {
-        this.idBook = idBook;
+    public Book(String id, String name, String year, Genre genre, Author author, Comment comments) {
+        this.id = id;
         this.name = name;
         this.year = year;
         this.genres = Collections.singletonList(genre);
@@ -54,8 +50,8 @@ public class Book {
         this.comments = Collections.singletonList(comments);
     }
 
-    public Book(String idBook, String name, String year, Genre genre, Author author) {
-        this.idBook = idBook;
+    public Book(String id, String name, String year, Genre genre, Author author) {
+        this.id = id;
         this.name = name;
         this.year = year;
         this.genres = Collections.singletonList(genre);
@@ -73,7 +69,7 @@ public class Book {
     @Override
     public String toString() {
         return "Book{" +
-                "idBook=" + idBook +
+                "idBook=" + id +
                 ", name='" + name + '\'' +
                 ", year='" + year + '\'' +
                 ", genres=" + genres +

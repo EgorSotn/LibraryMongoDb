@@ -1,10 +1,7 @@
 package org.example.home.service;
 
-import lombok.AllArgsConstructor;
-import org.example.home.controller.ControllerMessengerIO;
 import org.example.home.domain.Author;
 import org.example.home.domain.Book;
-import org.example.home.domain.Comment;
 import org.example.home.domain.Genre;
 import org.springframework.stereotype.Service;
 
@@ -30,7 +27,7 @@ public class PresentationServiceImpl implements PresentationService{
     }
 
     private String convertBookToString(Book book){
-        String str = "(" + "id=:" + book.getIdBook() + " Название: " + book.getName() + " Год издания: " + book.getYear()
+        String str = "(" + "id=:" + book.getId() + " Название: " + book.getName() + " Год издания: " + book.getYear()
                 + " Имя автора: "  + book.getAuthor().getNameAuthor() +
                 " Название жанра: "
                 + book.getGenres().stream().map(Genre::toString).collect(Collectors.joining(",")) + " ";

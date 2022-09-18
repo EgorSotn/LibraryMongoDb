@@ -1,7 +1,6 @@
 package org.example.home.repository.book;
 
 import org.example.home.domain.Book;
-
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;

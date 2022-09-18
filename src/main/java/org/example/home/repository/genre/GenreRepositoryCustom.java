@@ -1,6 +1,5 @@
 package org.example.home.repository.genre;
 
-import org.example.home.domain.Author;
 import org.example.home.domain.Genre;
 
 import java.util.Optional;

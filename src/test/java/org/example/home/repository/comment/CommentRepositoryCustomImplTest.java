@@ -2,30 +2,21 @@ package org.example.home.repository.comment;
 
 import lombok.val;
 import org.example.home.domain.Comment;
-import org.example.home.domain.Genre;
 import org.example.home.repository.AbstractRepositoryMongoTest;
-import org.example.home.repository.author.AuthorRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.jdbc.EmbeddedDatabaseConnection;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 
 @ExtendWith(SpringExtension.class)
 class CommentRepositoryCustomImplTest extends AbstractRepositoryMongoTest {
 
-//    private static final long FIRST_COMMENT_ID = 1l;
-//    @Autowired
-//    private TestEntityManager em;
+
     @Autowired
     private MongoTemplate mongoTemplate;
 

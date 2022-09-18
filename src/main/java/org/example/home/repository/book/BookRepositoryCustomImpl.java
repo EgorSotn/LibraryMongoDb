@@ -1,8 +1,6 @@
 package org.example.home.repository.book;
 
-import lombok.RequiredArgsConstructor;
 import org.example.home.domain.Book;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
