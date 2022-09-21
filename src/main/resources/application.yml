@@ -8,6 +8,7 @@ spring:
       database: LibraryWeb
       port: 27017
       host: localhost
+      auto-index-creation: true
 mongock:
   # runner-type: "ApplicationRunner" # default
   runner-type: "InitializingBean"

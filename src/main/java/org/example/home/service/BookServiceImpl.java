@@ -2,8 +2,11 @@ package org.example.home.service;
 
 import lombok.AllArgsConstructor;
 import org.example.home.domain.Book;
+import org.example.home.domain.Genre;
 import org.example.home.exception.NotFoundException;
+import org.example.home.repository.author.AuthorRepository;
 import org.example.home.repository.book.BookRepository;
+import org.example.home.repository.genre.GenreRepository;
 import org.springframework.stereotype.Service;
 
 
@@ -14,18 +17,18 @@ import java.util.List;
 @AllArgsConstructor
 public class BookServiceImpl implements BookService{
     private BookRepository bookRepository;
-//    private GenreRepository genreRepository;
-//    private AuthorRepository authorRepository;
+    private GenreRepository genreRepository;
+    private AuthorRepository authorRepository;
     @Override
     public Book createBook(Book book) {
-//        List<Genre> genres = book.getGenres();
-//        for (Genre genre : genres) {
-//            genreRepository.getByNameOrCreate(genre);
-//        }
-//        authorRepository.getByNameOrCreate(book.getAuthor());
-//        if (bookRepository.isExistBook(book)) {
-//            return null;
-//        }
+        List<Genre> genres = book.getGenres();
+        for (Genre genre : genres) {
+            genreRepository.getByNameOrCreate(genre);
+        }
+        authorRepository.getByNameOrCreate(book.getAuthor());
+        if (bookRepository.isExistBook(book)) {
+            return null;
+        }
 
          return bookRepository.save(book);
     }
